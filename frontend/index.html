@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SwasthyaGrid AI</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <div class="brand">SwasthyaGrid <span>AI</span></div>
+      <div class="subtitle">Federated National Health Resource Intelligence</div>
+    </div>
+    <div class="live"><i></i> DEMO LIVE</div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">NATIONAL HEALTH RESOURCE CONTROL PLANE</p>
+        <h1>India PHC Network Command Dashboard</h1>
+        <p>Monitor medicine inventory, bed capacity and workforce availability with predictive alerts and cross-district redistribution recommendations.</p>
+      </div>
+      <div class="filters">
+        <label>State
+          <select id="stateFilter"><option value="">All States</option></select>
+        </label>
+        <label>Medicine
+          <select id="medicineFilter">
+            <option value="">All Medicines</option>
+            <option>ORS</option>
+            <option>Paracetamol</option>
+            <option>IV Fluids</option>
+          </select>
+        </label>
+      </div>
+    </section>
+
+    <section class="metrics" id="metrics"></section>
+
+    <section class="grid two">
+      <div class="panel">
+        <div class="panel-head"><h2>PHC Network Status</h2><span id="facilityCount"></span></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Facility</th><th>State</th><th>Beds</th><th>Staff</th><th>Status</th></tr></thead>
+            <tbody id="facilityTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h2>Early Warning Alerts</h2><span class="badge danger" id="alertCount"></span></div>
+        <div id="alerts" class="alerts"></div>
+      </div>
+    </section>
+
+    <section class="grid two">
+      <div class="panel">
+        <div class="panel-head"><h2>Medicine Inventory</h2><span>Predictive stock risk</span></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Medicine</th><th>Facility</th><th>Stock</th><th>Days</th><th>Risk</th></tr></thead>
+            <tbody id="resourceTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h2>7-Day Demand Forecast</h2><span id="forecastTitle">ORS</span></div>
+        <div id="forecastChart" class="chart"></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>AI Redistribution Recommendations</h2>
+        <button id="refreshPlan">Recalculate Plan</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Medicine</th><th>From</th><th>To</th><th>Quantity</th><th>Priority</th></tr></thead>
+          <tbody id="planTable"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel federated">
+      <div class="panel-head">
+        <div><h2>Federated Learning Control</h2><span>Privacy-preserving model aggregation simulation</span></div>
+        <button id="trainBtn">Run FedAvg</button>
+      </div>
+      <div id="federatedResult" class="fed-result">
+        State nodes can train locally and share model updates instead of raw patient-level records.
+      </div>
+    </section>
+
+    <footer>
+      <strong>Demo / academic prototype.</strong> Data is simulated and must not be used for real clinical, government, emergency or patient-care decisions.
+    </footer>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
